@@ -1,0 +1,50 @@
+.btn_submit {
+  background: #fcbad3;
+  border: none;
+  display: block;
+  font-weight: 700;
+  margin-left: auto;
+  font-size: 19px;
+}
+.btn_submit:hover {
+  background: #ff91bb;
+  transition: 0.4s;
+  border: none;
+  box-shadow: none;
+}
+.btn_submit:focus {
+  box-shadow: none;
+  background: #ff91bb;
+}
+.meetingForm {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+.meetingForm h2 {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #2ec7ff;
+}
+.custom-file-input {
+  cursor: pointer;
+}
+.formData {
+  border: none;
+  border-radius: 10px;
+}
+.imagePreview {
+  width: 100%;
+}
+@media (max-width: 676px) {
+  .meetingForm {
+    position: unset;
+    transform: none;
+
+    font-family: "Poppins", sans-serif;
+  }
+}

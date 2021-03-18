@@ -1,0 +1,28 @@
+.dashboard_meeting {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+.table__wrapper {
+  border-radius: 14px;
+  border: none;
+  box-shadow: 6px 7px 7px #7edaf8;
+}
+.searchInput {
+  width: 245px;
+  height: 40px;
+  box-shadow: 4px 3.5px 7px #97dff7;
+}
+.pagination__meeting {
+  position: relative;
+}
+@media (max-width: 676px) {
+  .dashboard_meeting {
+    position: unset;
+    transform: none;
+  }
+}

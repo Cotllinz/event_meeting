@@ -1,0 +1,52 @@
+.card_main,
+.card-img-top {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+}
+.card_main {
+  overflow: hidden;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 6px 7px 7px #a8d8ea;
+}
+.card-body {
+  padding: 10px 20px 20px;
+}
+.card-title h5 {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.title_meeting h2 {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #fcbad3;
+}
+.title_meeting p {
+  font-size: 0.7em;
+  color: #aa96da;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.participant_images {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 35%;
+}
+.participant_wrapper p {
+  font-size: 13px;
+}
+.participant {
+  min-width: 100%;
+  white-space: nowrap;
+}
+.Note {
+  font-size: 12px;
+}
+.Note h5 {
+  font-size: 15px;
+  margin-bottom: 0;
+  font-weight: 700;
+}
