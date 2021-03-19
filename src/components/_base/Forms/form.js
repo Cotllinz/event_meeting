@@ -1,24 +1,94 @@
-import React from "react";
-import { Card, Col, Container, Button, Form, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import {
+  Card,
+  Col,
+  Container,
+  Button,
+  Form,
+  Row,
+  Alert,
+} from "react-bootstrap";
 import "../../../assets/css/form.css";
-import Image from "../../../assets/img/img_example.svg";
-function form() {
+import { useDispatch } from "react-redux";
+import { setMeeting } from "./formReducer";
+import ImageDefault from "../../../assets/img/img_example.svg";
+function Forms() {
+  const [Image, setImage] = useState("");
+  const [Error, setError] = useState(false);
+  const [ErrorMsg, setErrorMsg] = useState("");
+  const dispatch = useDispatch();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const Forms = {
+      meetingName: event.target[0].value,
+      locationMeeting: event.target[1].value,
+      participantMeeting: event.target[2].value,
+      dateMeeting: event.target[3].value,
+      notesMeeting: event.target[4].value,
+      Images:
+        event.target.files && event.target[5].files[0]
+          ? URL.createObjectURL(event.target[5].files[0])
+          : "",
+    };
+    if (
+      Forms.Images &&
+      Forms.dateMeeting &&
+      Forms.meetingName &&
+      Forms.locationMeeting &&
+      Forms.notesMeeting &&
+      Forms.participantMeeting
+    ) {
+      if (Forms.notesMeeting.length > 50) {
+        dispatch(setMeeting(Forms));
+        /* Clear Fill Form */
+        setImage("");
+        event.target[0].value = null;
+        event.target[1].value = null;
+        event.target[2].value = null;
+        event.target[3].value = null;
+        event.target[4].value = null;
+        event.target[5].value = null;
+      } else {
+        setErrorMsg("Note Meeting Min 50 kata");
+        setError(true);
+      }
+    } else {
+      setErrorMsg("Fill all form first");
+      setError(true);
+    }
+    setTimeout(() => {
+      setError(false);
+    }, 4000);
+  };
+  const onImageReview = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+    }
+  };
   return (
     <div className="mt-4 meetingForm">
       <Container>
         <Row className="align-items-center">
           <Col lg={6}>
             <Card className="formData">
+              <Alert transition={true} show={Error} variant="danger">
+                {ErrorMsg}
+              </Alert>
               <Card.Body>
-                <h2>+ Add Event</h2>
-                <Form className="mt-3">
+                <h2>+ Add Event </h2>
+                <Form onSubmit={handleSubmit} className="mt-3">
                   <Form.Row>
                     <Form.Group as={Col} controlId="Title">
-                      <Form.Control type="text" placeholder="Title Meeting" />
+                      <Form.Control
+                        type="text"
+                        name="title"
+                        placeholder="Title Meeting"
+                      />
                     </Form.Group>
                     <Form.Group as={Col} controlId="Location">
                       <Form.Control
                         type="text"
+                        name="location"
                         placeholder="Location Meeting"
                       />
                     </Form.Group>
@@ -27,6 +97,7 @@ function form() {
                     <Form.Group as={Col} controlId="participantCapacity">
                       <Form.Control
                         type="number"
+                        name="parrticipant"
                         placeholder="Participant Meeting"
                       />
                     </Form.Group>
@@ -38,6 +109,7 @@ function form() {
                     <Form.Control
                       as="textarea"
                       rows={5}
+                      name="notes"
                       placeholder="Note Meeting"
                       style={{ resize: "none" }}
                     />
@@ -45,12 +117,13 @@ function form() {
                   <Form.File
                     label="Upload Picture"
                     custom
-                    onChange={(e) => {
-                      console.log(e.target.value.slice(12));
-                    }}
+                    name="files"
+                    onChange={onImageReview}
                     id="fileUpload"
                   ></Form.File>
-                  <Button className="mt-3 py-2 px-5 btn_submit">Submit</Button>
+                  <Button type="submit" className="mt-3 py-2 px-5 btn_submit">
+                    Submit
+                  </Button>
                 </Form>
               </Card.Body>
             </Card>
@@ -59,7 +132,7 @@ function form() {
             <section>
               <img
                 className="imagePreview mb-3"
-                src={Image}
+                src={Image ? Image : ImageDefault}
                 alt="image_preview"
               />
             </section>
@@ -70,4 +143,4 @@ function form() {
   );
 }
 
-export default form;
+export default Forms;

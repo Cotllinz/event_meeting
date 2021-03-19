@@ -9,7 +9,11 @@ import {
   Table,
 } from "react-bootstrap";
 import "../../../assets/css/dashboard.css";
-function dashboard() {
+import { useSelector } from "react-redux";
+import moment from "moment";
+import { meeting } from "../Forms/formReducer";
+function Dashboard() {
+  const Meeting = useSelector(meeting);
   let active = 2;
   let items = [];
   for (let number = 1; number <= 5; number++) {
@@ -41,30 +45,18 @@ function dashboard() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Larry the Bird</td>
-                      <td>@twitter</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                    </tr>
+                    {Meeting.map((items, index) => {
+                      return (
+                        <tr key="index">
+                          <td>{index + 1}</td>
+                          <td>{items.meetingName}</td>
+                          <td>{items.locationMeeting}</td>
+                          <td>{moment(items.dateMeeting).format("LL")}</td>
+                          <td>{items.participantMeeting}</td>
+                          <td>{items.notesMeeting}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </Table>
 
@@ -83,4 +75,4 @@ function dashboard() {
   );
 }
 
-export default dashboard;
+export default Dashboard;
