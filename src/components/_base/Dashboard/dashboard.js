@@ -52,7 +52,7 @@ function Dashboard() {
                           <td>{items.meetingName}</td>
                           <td>{items.locationMeeting}</td>
                           <td>{moment(items.dateMeeting).format("LL")}</td>
-                          <td>{items.participantMeeting}</td>
+                          <td>{items.participantMeeting} People</td>
                           <td>{items.notesMeeting}</td>
                         </tr>
                       );

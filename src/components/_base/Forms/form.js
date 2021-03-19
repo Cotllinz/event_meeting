@@ -16,6 +16,7 @@ function Forms() {
   const [Image, setImage] = useState("");
   const [Error, setError] = useState(false);
   const [ErrorMsg, setErrorMsg] = useState("");
+  const [Success, setSuccess] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,6 +42,7 @@ function Forms() {
       if (Forms.notesMeeting.length > 50) {
         dispatch(setMeeting(Forms));
         /* Clear Fill Form */
+        setSuccess(true);
         setImage("");
         event.target[0].value = null;
         event.target[1].value = null;
@@ -57,6 +59,7 @@ function Forms() {
       setError(true);
     }
     setTimeout(() => {
+      setSuccess(false);
       setError(false);
     }, 4000);
   };
@@ -73,6 +76,9 @@ function Forms() {
             <Card className="formData">
               <Alert transition={true} show={Error} variant="danger">
                 {ErrorMsg}
+              </Alert>
+              <Alert transition={true} show={Success} variant="success">
+                Success Create Meeting Rooms
               </Alert>
               <Card.Body>
                 <h2>+ Add Event </h2>

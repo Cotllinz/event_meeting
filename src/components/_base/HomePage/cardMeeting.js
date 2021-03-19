@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "../../../assets/css/cardMeeting.css";
 import Image from "../../../assets/img/img_example.svg";
-import HumanImage from "../../../assets/img/human_example.svg";
 import { GeoAltFill } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import moment from "moment";
@@ -34,30 +33,12 @@ function CardMeeting() {
                       </div>
                     </Card.Title>
                     <hr />
-                    <main className="participant d-flex justify-content-center">
+                    <main className="participant d-flex">
                       <section className="d-flex participant_wrapper align-self-center mr-2">
-                        <img
-                          className="participant_images mr-2"
-                          src={HumanImage}
-                          alt="humanPicture"
-                        />
-                        <p>Rudy Galih</p>
-                      </section>
-                      <section className="d-flex participant_wrapper align-self-center mr-2">
-                        <img
-                          className="participant_images mr-2"
-                          src={HumanImage}
-                          alt="humanPicture"
-                        />
-                        <p>Rudy Galih</p>
-                      </section>
-                      <section className="d-flex participant_wrapper align-self-center mr-2">
-                        <img
-                          className="participant_images mr-2"
-                          src={HumanImage}
-                          alt="humanPicture"
-                        />
-                        <p>Rudy Galih</p>
+                        <h5>
+                          Participant Capacity : {items.participantMeeting}{" "}
+                          People
+                        </h5>
                       </section>
                     </main>
                     <hr className="mt-0" />

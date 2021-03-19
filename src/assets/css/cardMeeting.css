@@ -35,13 +35,10 @@
   object-fit: cover;
   object-position: 35%;
 }
-.participant_wrapper p {
+.participant_wrapper h5 {
   font-size: 13px;
 }
-.participant {
-  min-width: 100%;
-  white-space: nowrap;
-}
+
 .Note {
   font-size: 12px;
 }
