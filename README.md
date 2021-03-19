@@ -11,6 +11,7 @@
 ## About The Project
 
 MeetRoom Generator is a website that made for Create meeting room generator and with dashboard table for search.
+Modern Design
 this website build with tools etc. React.js, Redux
 
 ## License
